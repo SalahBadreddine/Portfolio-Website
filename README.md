@@ -8,7 +8,7 @@ This is my personal portfolio website showcasing my projects, skills, and experi
 * Projects showcase with live demo & code links
 * About me and contact section
 
-## 🔗 Live Demo
+## 🔗 Live Demo
 
 ## 🛠️ Technologies
 React
