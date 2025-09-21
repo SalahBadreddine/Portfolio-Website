@@ -4,13 +4,14 @@ This is my personal portfolio website showcasing my projects, skills, and experi
 
 ## 🚀 Features
 
-* Responsive design for all devices
-* Projects showcase with live demo & code links
-* About me and contact section
+* Responsive design for all devices  
+* Projects showcase with live demo & code links  
+* About me and contact section  
 
 ## 🔗 Live Demo
+[Visit the Portfolio](https://salahbadreddine.vercel.app)
 
 ## 🛠️ Technologies
-React
-Tailwind CSS
-Vercel (Hosting)
+- React  
+- Tailwind CSS  
+- Vercel (Hosting)  
