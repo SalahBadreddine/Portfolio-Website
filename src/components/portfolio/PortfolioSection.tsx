@@ -23,6 +23,17 @@ import JobmatchingHome from "@/assets/jobmatching/home.jpeg";
 import JobmatchingDashboard from "@/assets/jobmatching/dahboard.jpeg";
 import JobmatchingEmployer from "@/assets/jobmatching/employer.jpeg";
 import JobmatchingSeeker from "@/assets/jobmatching/seeker.jpeg";
+import BazarHome from "@/assets/bazar/home.png";
+import BazarOnboarding from "@/assets/bazar/onboarding.png";
+import BazarLogin from "@/assets/bazar/login.png";
+import BazarSingUp from "@/assets/bazar/signup.png";
+import BazarVerification from "@/assets/bazar/verification.png";
+import BazarCategory from "@/assets/bazar/category.png";
+import BazarBook from "@/assets/bazar/book.png";
+import BazarVendors from "@/assets/bazar/vendors.png";
+import BazarWishlist from "@/assets/bazar/wishlist.png";
+import BazarProfile from "@/assets/bazar/profile.png";
+import BazarAccount from "@/assets/bazar/account.png";
 
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -84,6 +95,29 @@ const PortfolioSection = () => {
       technologies: ["Vue.js", "D3.js", "PostgreSQL", "Express"],
       liveUrl: "#",
       githubUrl: "#"
+    },
+    {
+      id: 4,
+      title: "Bazar",
+      description: "A mobile book reading app that integrates Supabase for authentication and database management—allowing users to sign up, log in, browse a curated library, add books to their wishlist, and manage their personal profiles with a clean Flutter interface",
+      image: BazarHome,
+      gallery: [
+        BazarOnboarding,
+        BazarLogin,
+        BazarSingUp,
+        BazarVerification,
+        BazarHome,
+        BazarCategory,
+        BazarWishlist,
+        BazarProfile,
+        BazarAccount,
+        BazarBook,
+        BazarVendors
+      ],
+      category: "mobile",
+      technologies: ["Flutter", "Supabase", "PostgreSQL", "Dart"],
+      liveUrl: "#",
+      githubUrl: "https://github.com/SalahBadreddine/Bazar"
     }
   ];
 
