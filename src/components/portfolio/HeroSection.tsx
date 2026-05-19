@@ -70,9 +70,14 @@ const [currentTextIndex, setCurrentTextIndex] = useState(0);
                 View My Work
                 <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
               </Button>
-              <Button variant="glass" size="lg">
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
+              <Button variant="glass" size="lg" asChild>
+                <a
+                  href="/Badreddine_Salah_CV.pdf"
+                  download="Badreddine_Salah_CV.pdf"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download CV
+                </a>
               </Button>
             </div>
 
