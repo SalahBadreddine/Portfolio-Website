@@ -1,88 +1,108 @@
-import { Button } from "../ui/button";
-import { Card } from "../ui/card";
-import { Badge } from "../ui/badge";
-import { Award, Coffee, Users, Zap } from "lucide-react";
+import { Brain, Database, Globe, Smartphone, Languages, MapPin, Sparkles } from "lucide-react";
+import { Counter, Marquee, Reveal, SectionHeader, TiltCard } from "../fx";
 
-const AboutSection = () => {
-  const stats = [
-    { icon: Award, value: "1+", label: "Years Experience" },
-    { icon: Users, value: "1", label: "Happy Clients" },
-    { icon: Coffee, value: "10+", label: "Projects Done" },
-    { icon: Zap, value: "99%", label: "Success Rate" },
-  ];
+const STACK = [
+  "Python", "PyTorch", "TensorFlow", "scikit-learn", "GNNs", "LLMs & RAG", "R", "SQL Server", "Power BI", "DAX", "dbt", "Airflow", "Airbyte",
+  "TypeScript", "React", "Next.js", "NestJS", "Node.js", "Tailwind", "FastAPI", "Flask", "Flutter", "Dart", "SwiftUI", "Supabase", "Firebase", "PostgreSQL", "C++", "Java", "Git",
+];
 
-  const skills = [
-    "Artificial Intelligence", "iOS & Mobile Development", "Machine Learning",
-    "Flutter", "Python", "C++", 
-    "React", "Next.js", "Tailwind CSS",  
-    "Node.js", "PostgreSQL", "Problem Solving", "Community Leadership"
-  ];
+const SKILLS = [
+  { icon: Brain, title: "AI & Machine Learning", color: "from-orange-500/20", items: ["Deep learning (CNNs, GNNs)", "Federated learning", "NLP · RAG · LLM fine-tuning", "Explainable ML", "Time-series (ARIMA/SARIMA)", "Search & optimisation"] },
+  { icon: Database, title: "Data Engineering & BI", color: "from-sky-500/20", items: ["Star-schema data warehouses", "SQL Server · ETL / ELT", "Airbyte → Airflow → dbt", "Power BI · DAX · KPI design", "Data governance frameworks"] },
+  { icon: Globe, title: "Web & SaaS", color: "from-violet-500/20", items: ["React · Next.js · TypeScript", "NestJS · Node · FastAPI · Flask", "Multi-tenant architecture", "Auth, REST APIs, PostgreSQL"] },
+  { icon: Smartphone, title: "Mobile", color: "from-emerald-500/20", items: ["Flutter + BLoC", "SwiftUI (iOS)", "Supabase · Firebase · FCM", "i18n incl. Arabic RTL"] },
+];
 
-  return (
-    <section id="about" className="py-20 relative">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            About <span className="gradient-text">Me</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-balance">
-            Passionate about artificial intelligence and development, 
-            I build mobile and web applications that combine innovation with 
-            real-world impact.
-          </p>
-        </div>
+const AboutSection = () => (
+  <section id="about" className="relative py-24 sm:py-32">
+    <div className="container mx-auto">
+      <SectionHeader
+        eyebrow="About me"
+        title="A bit about me"
+        highlight={["me"]}
+        subtitle="I'm in my 4th year at ENSIA, the national AI school in Algiers. I like the part where a model stops being a notebook and becomes something people actually use."
+      />
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-          {/* About content */}
-          <div className="animate-slide-up">
-            <h3 className="text-2xl font-semibold mb-6">My Journey</h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-               I am an AI student and developer passionate about creating impactful digital 
-              solutions. My focus lies in building intelligent systems, mobile applications, 
-              and scalable web platforms that solve real-world problems. 
-            </p>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              I’ve worked on diverse projects, from AI-driven prototypes to full-stack 
-              applications, and participated in team competitions where collaboration and 
-              problem-solving were key to success. I approach every challenge with discipline, 
-              creativity, and a commitment to delivering results. 
-            </p>
-            
-            <Button variant="gradient" size="lg">
-              Let's Work Together
-            </Button>
-          </div>
-
-          {/* Skills */}
-          <div className="animate-slide-up delay-300">
-            <h3 className="text-2xl font-semibold mb-6">Skills & Technologies</h3>
-            <div className="flex flex-wrap gap-3 mb-8">
-              {skills.map((skill, index) => (
-                <Badge 
-                  key={index} 
-                  variant="secondary" 
-                  className="px-4 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition-smooth cursor-default"
-                >
-                  {skill}
-                </Badge>
-              ))}
+      {/* Bento */}
+      <div className="grid gap-4 sm:gap-5 md:grid-cols-6">
+        <Reveal className="md:col-span-4">
+          <TiltCard max={3} className="h-full rounded-3xl">
+            <div className="relative h-full overflow-hidden rounded-3xl glass p-6 sm:p-8">
+              <Sparkles className="absolute right-6 top-6 h-6 w-6 text-primary/40" />
+              <h3 className="font-display text-2xl font-bold mb-4">My story</h3>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  I study AI engineering at <span className="text-foreground font-medium">ENSIA</span>. I learn best by building things,
+                  so most of what I study ends up as a project.
+                </p>
+                <p>
+                  Right now I'm working on <span className="text-foreground">federated learning for hospitals</span>, a research project on graph neural networks,
+                  and my internship at <span className="text-foreground">GIBA Group</span>, where I work on their data warehouse and Power BI dashboards.
+                </p>
+                <p>
+                  Outside class I lead IT at the <span className="text-foreground">Skill&amp;Tell Scientific Club</span>, so I build the club's websites and help organise datathons.
+                </p>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-2 text-xs">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5"><MapPin className="h-3.5 w-3.5 text-primary" />Algiers, Algeria</span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5"><Languages className="h-3.5 w-3.5 text-primary" />Arabic · French (C2) · English</span>
+              </div>
             </div>
-          </div>
-        </div>
+          </TiltCard>
+        </Reveal>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in">
-          {stats.map((stat, index) => (
-            <Card key={index} className="p-6 text-center gradient-card border-0 shadow-card hover:shadow-hover transition-smooth group">
-              <stat.icon className="h-8 w-8 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" />
-              <div className="text-3xl font-bold mb-2 gradient-text">{stat.value}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </Card>
+        <div className="grid grid-cols-2 gap-4 sm:gap-5 md:col-span-2">
+          {[
+            { v: <Counter to={4} prefix="Y" duration={1} />, l: "AI engineering", s: "ENSIA, since 2023" },
+            { v: <Counter to={3} duration={1} />, l: "Languages", s: "Arabic · French C2 · English" },
+            { v: <Counter to={20} suffix="+" />, l: "Projects shipped", s: "AI · web · mobile · data" },
+            { v: <Counter to={200} suffix="+" />, l: "Survey responses", s: "modelled in SomaTrack" },
+          ].map((s, i) => (
+            <Reveal key={i} delay={0.08 * i}>
+              <TiltCard max={10} className="h-full rounded-3xl">
+                <div className="flex h-full flex-col justify-between rounded-3xl glass p-4 sm:p-5">
+                  <div className="font-display text-3xl sm:text-4xl font-bold gradient-text tabular-nums">{s.v}</div>
+                  <div className="mt-3">
+                    <div className="text-sm font-medium">{s.l}</div>
+                    <div className="text-xs text-muted-foreground">{s.s}</div>
+                  </div>
+                </div>
+              </TiltCard>
+            </Reveal>
           ))}
         </div>
+
+        {SKILLS.map((g, i) => (
+          <Reveal key={g.title} delay={0.06 * i} className="md:col-span-3 lg:col-span-3 xl:col-span-3">
+            <TiltCard max={4} className="h-full rounded-3xl">
+              <div className={`relative h-full overflow-hidden rounded-3xl glass p-6`}>
+                <div className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${g.color} to-transparent blur-2xl`} />
+                <div className="relative flex items-center gap-3 mb-4">
+                  <div className="grid h-11 w-11 place-items-center rounded-2xl bg-primary/10 ring-1 ring-primary/30"><g.icon className="h-5 w-5 text-primary" /></div>
+                  <h3 className="font-display text-lg font-bold">{g.title}</h3>
+                </div>
+                <ul className="relative flex flex-wrap gap-2">
+                  {g.items.map((it) => (
+                    <li key={it} className="rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1 text-xs sm:text-sm text-foreground/85 transition-colors hover:border-primary/50 hover:text-primary">{it}</li>
+                  ))}
+                </ul>
+              </div>
+            </TiltCard>
+          </Reveal>
+        ))}
       </div>
-    </section>
-  );
-};
+
+      {/* stack marquee */}
+      <div className="mt-14 space-y-3">
+        <Marquee speed={45}>
+          {STACK.map((t) => <span key={t} className="whitespace-nowrap rounded-xl glass px-4 py-2 font-mono text-sm text-muted-foreground">{t}</span>)}
+        </Marquee>
+        <Marquee speed={55} reverse>
+          {[...STACK].reverse().map((t) => <span key={t} className="whitespace-nowrap rounded-xl border border-primary/20 bg-primary/[0.05] px-4 py-2 font-mono text-sm text-primary/80">{t}</span>)}
+        </Marquee>
+      </div>
+    </div>
+  </section>
+);
 
 export default AboutSection;

@@ -1,98 +1,52 @@
-import { Button } from "../ui/button";
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { ArrowUp, Github, Linkedin, Instagram } from "lucide-react";
+import { Marquee } from "../fx";
+import { NAV, scrollToId } from "./Navigation";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" }
-  ];
-
-  const quickLinks = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Contact", href: "#contact" }
-  ];
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId.replace('#', ''));
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+  const year = new Date().getFullYear();
   return (
-    <footer className="py-12 border-t border-border/50 relative">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <div className="text-2xl font-bold gradient-text mb-4">
-              Salah Badreddine
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-             AI Engineer Student & Full-Stack Developer passionate about solving real-world problems through innovation and technology.
-            </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <Button
-                  key={index}
-                  variant="ghost"
-                  size="icon"
-                  asChild
-                  className="hover:text-primary transition-colors"
-                >
-                  <a href={social.href} aria-label={social.label}>
-                    <social.icon className="h-5 w-5" />
-                  </a>
-                </Button>
+    <footer className="relative overflow-hidden border-t border-white/5 pt-14">
+      <Marquee speed={35} className="mb-12">
+        {["AI Engineering", "Machine Learning", "Federated Learning", "Data & BI", "Full-Stack", "Mobile", "Research"].map((w) => (
+          <span key={w} className="flex items-center gap-4 whitespace-nowrap font-display text-4xl sm:text-6xl font-bold text-white/[0.07]">
+            {w}<span className="text-primary/40">✦</span>
+          </span>
+        ))}
+      </Marquee>
+
+      <div className="container mx-auto pb-10">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <div className="max-w-sm">
+            <div className="font-display text-2xl font-bold"><span className="gradient-text">Salah Badreddine</span></div>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">AI engineering student at ENSIA. I build ML, data and app projects, mostly in Algiers.</p>
+            <div className="mt-5 flex gap-2">
+              {[
+                { icon: Github, href: "https://github.com/SalahBadreddine", label: "GitHub" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/salah-badreddine-975890312/", label: "LinkedIn" },
+                { icon: Instagram, href: "https://www.instagram.com/salah_badd/", label: "Instagram" },
+              ].map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                  className="grid h-10 w-10 place-items-center rounded-xl glass text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors">
+                  <s.icon className="h-4 w-4" />
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <nav className="space-y-2">
-              {quickLinks.map((link, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollToSection(link.href)}
-                  className="block text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  {link.label}
-                </button>
-              ))}
-            </nav>
-          </div>
+          <nav className="grid grid-cols-2 gap-x-12 gap-y-2 sm:grid-cols-3">
+            {NAV.map((n) => (
+              <button key={n.id} onClick={() => scrollToId(n.id)} className="text-left text-sm text-muted-foreground hover:text-primary transition-colors">{n.label}</button>
+            ))}
+          </nav>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-semibold mb-4">Get In Touch</h4>
-            <div className="space-y-2 text-sm text-muted-foreground">
-              <p>salah.badreddine1@gmail.com</p>
-              <p>+213 672186755</p>
-              <p>Ben Aknoun, Algiers, Algeria</p>
-            </div>
-            <Button variant="gradient" size="sm" className="mt-4">
-              Let's Work Together
-            </Button>
-          </div>
+          <button onClick={() => scrollToId("home")} className="group inline-flex items-center gap-2 self-start rounded-xl glass px-4 py-2.5 text-sm hover:border-primary/50">
+            Back to top <ArrowUp className="h-4 w-4 text-primary transition-transform group-hover:-translate-y-1" />
+          </button>
         </div>
 
-        {/* Bottom */}
-        <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-center items-center text-sm text-muted-foreground space-x-5">
-          <div className="flex items-center space-x-1 mb-4 md:mb-0">
-            <span>© {currentYear} Salah Badreddine - Made with</span>
-            <Heart className="h-4 w-4 text-primary fill-primary" />
-          </div>
-          <div>
-            <span>All rights reserved.</span>
-          </div>
+        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-white/5 pt-6 text-xs text-muted-foreground sm:flex-row">
+          <span>© {year} Salah Badreddine. All rights reserved.</span>
+          <span className="font-mono">Designed & built in Algiers · React · Framer Motion</span>
         </div>
       </div>
     </footer>
